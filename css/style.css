@@ -1070,7 +1070,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .service-category {
     font-family: var(--font-display);
-    font-size: 1.125rem;
+    font-size: 1.75rem;
     font-weight: 500;
     letter-spacing: 0.1em;
     padding: var(--spacing-md) var(--spacing-lg);
@@ -1904,4 +1904,202 @@ h1, h2, h3, h4, h5, h6 {
 .slide-in-right.visible {
     opacity: 1;
     transform: translateX(0);
+}
+
+/* ----- Case Modal ----- */
+.case-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.case-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    position: relative;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.case-modal.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: var(--color-bg-light);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.modal-close:hover {
+    background: var(--color-border);
+}
+
+.modal-close svg {
+    width: 20px;
+    height: 20px;
+    color: var(--color-text);
+}
+
+.modal-header {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.modal-category {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-bg-light);
+    color: var(--color-text-light);
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+}
+
+.modal-type {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+}
+
+.modal-title {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.4;
+}
+
+.modal-details {
+    background: var(--color-bg-light);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.modal-detail {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.modal-detail:last-child {
+    border-bottom: none;
+}
+
+.modal-detail-label {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+.modal-detail-value {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+.modal-description {
+    margin-bottom: var(--spacing-lg);
+}
+
+.modal-description h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.modal-description p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text-light);
+}
+
+.modal-cta {
+    text-align: center;
+}
+
+.modal-cta .btn {
+    width: 100%;
+}
+
+/* Case card hover effect */
+.case-card[data-case] {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.case-card[data-case]:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Service list item click effect */
+.service-list li[data-case] {
+    transition: color 0.2s ease;
+}
+
+.service-list li[data-case]:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        padding: var(--spacing-lg);
+        margin: var(--spacing-md);
+    }
+
+    .modal-title {
+        font-size: 1.25rem;
+        padding-right: var(--spacing-xl);
+    }
 }
